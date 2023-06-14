@@ -9,14 +9,18 @@
 name: Create Python Package
 
 on:
-  release:
-    types: [published]
+  workflow_dispatch:
+    inputs:
+      build-input:
+        description: 'input'     
+        required: false
+        default: 'new_input'
 
 permissions:
   contents: read
 
 jobs:
-  deploy:
+  build:
 
     runs-on: ubuntu-latest
 
