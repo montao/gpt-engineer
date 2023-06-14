@@ -9,10 +9,7 @@ on:
       build-input:
         description: 'optional_input'     
         required: false
-        default: 'optional_input'
-
-permissions:
-  contents: read
+        default: 'optional_input' # does nothing now but could be useful later
 
 jobs:
   build:
@@ -28,14 +25,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install build
     - name: Build package
-      run: python -m build; pwd; ls
-    - name: Upload Wheel
+      run: python -m build
+    - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
-        name: gpt_engineer-0.1.0-py2.py3-none-any.whl
-        path: dist/gpt_engineer-0.1.0-py2.py3-none-any.whl
-    - name: Upload gzip
-      uses: actions/upload-artifact@v3
-      with:
-        name: gpt_engineer-0.1.0.tar.gz
-        path: dist/gpt_engineer-0.1.0.tar.gz        
+        name: gptengineer-0.1.0.tar.gz
+        path: dist/gptengineer-0.1.0.tar.gz        
