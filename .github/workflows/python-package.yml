@@ -35,8 +35,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install build
     - name: Build package
-      run: python -m build
-    - name: Save artifact
-      uses: actions/download-artifact@v2
+      run: python -m build; pwd; ls
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
       with:
-        name: gpt-engineer-${{ github.run_id }}-${{ github.run_attempt }}
+        name: gpt-${{ github.run_id }}-${{ github.run_attempt }}
+        path: unknown
