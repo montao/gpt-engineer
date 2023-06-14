@@ -36,8 +36,13 @@ jobs:
         pip install build
     - name: Build package
       run: python -m build; pwd; ls
-    - name: Upload Artifact
+    - name: Upload Wheel
       uses: actions/upload-artifact@v3
       with:
         name: gpt_engineer-0.1.0-py2.py3-none-any.whl
-        path: gpt_engineer-0.1.0-py2.py3-none-any.whl
+        path: dist/gpt_engineer-0.1.0-py2.py3-none-any.whl
+    - name: Upload gzip
+      uses: actions/upload-artifact@v3
+      with:
+        name: gpt_engineer-0.1.0-py2.py3-none-any.gzip
+        path: dist/gpt_engineer-0.1.0-py2.py3-none-any.whl        
